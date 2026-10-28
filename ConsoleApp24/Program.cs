@@ -1,15 +1,12 @@
-﻿
 using System;
 
 public class TestParabola
 {
-    
     public static bool IsOnTheGraph(Parabola parabola, Point p)
     {
         return parabola.IsOnTheGraph(p);
     }
 
-    
     public static Point GetMinMax(Parabola parabola)
     {
         return parabola.GetMinMax();
@@ -17,60 +14,55 @@ public class TestParabola
 
     public static void Main(string[] args)
     {
-        // 
-       
-        Console.Write("put a : ");
+        Console.Write("Enter coefficient a: ");
         double a = double.Parse(Console.ReadLine());
-        Console.Write("put b: ");
+        Console.Write("Enter coefficient b: ");
         double b = double.Parse(Console.ReadLine());
-        Console.Write("put c: ");
+        Console.Write("Enter coefficient c: ");
         double c = double.Parse(Console.ReadLine());
 
         Parabola p1 = new Parabola(a, b, c);
-        Console.WriteLine($"the new parabula: {p1}");
+        Console.WriteLine($"Parabola created: {p1}");
 
         double[] roots = p1.getRoots();
         if (roots.Length == 0)
         {
-            Console.WriteLine("לפרבולה אין שורשים ממשיים.");
+            Console.WriteLine("The parabola has no real roots.");
         }
         else if (roots.Length == 1)
         {
-            Console.WriteLine($"לפרבולה שורש יחיד: x = {roots[0]}");
+            Console.WriteLine($"The parabola has one root: x = {roots[0]}");
         }
         else
         {
-            Console.WriteLine($"לפרבולה שני שורשים: x1 = {roots[0]}, x2 = {roots[1]}");
+            Console.WriteLine($"The parabola has two roots: x1 = {roots[0]}, x2 = {roots[1]}");
         }
 
-        // ט. חקירת שתי פרבולות
-        Console.WriteLine("\n--- סעיף ט' ---");
-        Console.WriteLine("הכנס מקדמים לפרבולה הראשונה (a, b, c בהפרדה של אנטר):");
+        Console.WriteLine("\nEnter coefficients for the first parabola (a, b, c):");
         Parabola par1 = new Parabola(
             double.Parse(Console.ReadLine()),
             double.Parse(Console.ReadLine()),
             double.Parse(Console.ReadLine())
         );
 
-        Console.WriteLine("הכנס מקדמים לפרבולה השנייה (a, b, c בהפרדה של אנטר):");
+        Console.WriteLine("Enter coefficients for the second parabola (a, b, c):");
         Parabola par2 = new Parabola(
             double.Parse(Console.ReadLine()),
             double.Parse(Console.ReadLine()),
             double.Parse(Console.ReadLine())
         );
 
-        Console.WriteLine("\n--- תוצאות החקירה ---");
-        Console.WriteLine($"parabula num 1: {par1}");
-        Console.WriteLine($"kodkod parabula num 1: {par1.GetMinMax()}");
+        Console.WriteLine("\nParabola 1: " + par1);
+        Console.WriteLine("Vertex 1: " + par1.GetMinMax());
 
-        Console.WriteLine($"parabula num 2: {par2}");
-        Console.WriteLine($"kodkod parabula num 2: {par2.GetMinMax()}");
+        Console.WriteLine("Parabola 2: " + par2);
+        Console.WriteLine("Vertex 2: " + par2.GetMinMax());
 
         Point[] intersectionPoints = par1.GetCuttingPoint(par2);
-        Console.WriteLine($"num of cutting point: {intersectionPoints.Length}");
+        Console.WriteLine($"Number of intersection points: {intersectionPoints.Length}");
         for (int i = 0; i < intersectionPoints.Length; i++)
         {
-            Console.WriteLine($"cutting point {i + 1}: {intersectionPoints[i]}");
+            Console.WriteLine($"Intersection point {i + 1}: {intersectionPoints[i]}");
         }
     }
 }
